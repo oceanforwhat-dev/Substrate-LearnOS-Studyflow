@@ -1,5 +1,7 @@
 # Substrate: The Personal Capability Upgrade & Learning Operating System
 
+**Project Roadmap & Task Board**:[Click here to check what we have done！](https://github.com/users/oceanforwhat-dev/projects/1)
+
 [中文版](#chinese-version) | [English](#english-version)
 
 ---
