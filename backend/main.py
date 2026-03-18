@@ -8,14 +8,12 @@ import models
 from models import IdeaStatus
 from database import engine, get_db
 
-# 重建大厦：根据新图纸生成全新的 learnos.db
+
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="LearnOS API", version="0.0.3", description="个人能力进化引擎 MVP")
 
-# ==========================================
-# 1. Pydantic 海关安检员 (严格规定进出数据的格式)
-# ==========================================
+
 class IdeaCreate(BaseModel):
     text: str
 
@@ -46,9 +44,7 @@ class FlowOptionResponse(BaseModel):
     class Config:
         from_attributes = True
 
-# ==========================================
-# 2. 核心业务 API：想法避难所与靶场
-# ==========================================
+
 
 @app.post("/ideas", response_model=IdeaResponse, tags=["1. 想法靶场 (Idea Vault)"])
 def create_idea(idea: IdeaCreate, db: Session = Depends(get_db)):
@@ -62,17 +58,14 @@ def create_idea(idea: IdeaCreate, db: Session = Depends(get_db)):
 @app.post("/ideas/{idea_id}/analyze", tags=["2. 智能顾问 (AI Engine)"])
 def analyze_idea(idea_id: int, db: Session = Depends(get_db)):
     """步骤 2：用户点击【精进】，AI 顾问介入，给出可能的流程选项"""
-    # 找想法
+
     idea = db.query(models.Idea).filter(models.Idea.id == idea_id).first()
     if not idea:
         raise HTTPException(status_code=404, detail="没找到这个想法")
     
-    # 变更状态为分析中
     idea.status = IdeaStatus.ANALYZING
     db.commit()
 
-    # 【模拟 AI 思考过程】：这里未来会替换成调用 ChatGPT/Claude 的代码
-    # 目前我们直接返回两个硬编码的“选项”，让你感受一下交互逻辑
     return {
         "message": "AI 分析完毕，您想革新日程规划，建议从以下两个方向切入：",
         "options":[
@@ -87,27 +80,24 @@ def get_flow_modules(flow_id: int, db: Session = Depends(get_db)):
     modules = db.query(models.FlowModule).filter(models.FlowModule.flow_id == flow_id).all()
     return modules
 
-# ==========================================
-# 3. 极客后门：一键注入行业知识库 (Seed Data)
-# ==========================================
 @app.post("/seed", tags=["0. 系统基建"])
 def seed_database(db: Session = Depends(get_db)):
     """初始化数据库：注入 8大领域 和 1个标准的日程规划流程 (仅供测试使用)"""
-    # 如果已经有数据了，就不重复注入
+   
     if db.query(models.Domain).first():
         return {"message": "知识库已存在，无需重复注入"}
 
-    # 1. 注入领域
+   
     d1 = models.Domain(name="AI/ML 深度学习", description="核心突破口")
     db.add(d1)
     db.commit()
 
-    # 2. 注入一个典型的“流程”
+   
     f1 = models.DomainFlow(name="AI 极简全自动排期流 (重算法)", domain_id=d1.id)
     db.add(f1)
     db.commit()
 
-    # 3. 注入这个流程下的“功能节点”以及悬停透视数据
+   
     modules_data =[
         models.FlowModule(
             flow_id=f1.id, name="收集任务", 
