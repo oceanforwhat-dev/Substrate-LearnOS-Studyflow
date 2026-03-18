@@ -1,4 +1,4 @@
-# LearnOS: The Personal Capability Upgrade & Learning Operating System
+# Substrate: The Personal Capability Upgrade & Learning Operating System
 
 [中文版](#chinese-version) | [English](#english-version)
 
@@ -6,9 +6,9 @@
 
 <a name="english-version"></a>
 ## 🚀 Vision
-**LearnOS** is not just another note-taking tool. It is a **Learning Operating System** designed for senior engineers and researchers in AI, CG, Quant, and Web3. 
+**Substrate** is not just another note-taking tool. It is a **Learning Operating System** designed for senior engineers and researchers in AI, CG, Quant, and Web3. 
 
-Instead of building MVPs with fragmented tutorials, LearnOS helps you reverse-engineer your "Great Ideas" into "Fundamental Knowledge Paths." We don't build the product for you; we build the **capability** in you to build the product.
+Instead of building MVPs with fragmented tutorials, Substrate helps you reverse-engineer your "Great Ideas" into "Fundamental Knowledge Paths." We don't build the product for you; we build the **capability** in you to build the product.
 
 ### 🧠 Core Components
 1. **Idea Vault**: Transform vague inspirations into structured functional modules and capability requirements.
@@ -29,7 +29,7 @@ Instead of building MVPs with fragmented tutorials, LearnOS helps you reverse-en
 
 <a name="chinese-version"></a>
 ## 🚀 愿景（中文）
-**LearnOS** 是一个面向 AI、CG、量化、Web3 等硬核工程领域的「**个人能力升级与学习操作系统**」。
+**Substrate** 是一个面向 AI、CG、量化、Web3 等硬核工程领域的「**个人能力升级与学习操作系统**」。
 
 我们不主张通过碎片化的教程快速拼凑 MVP，而是主张从你的“伟大想法”出发，反向推导出实现该想法所需的“基础学科路径”。LearnOS 不替你造产品，而是让你具备造产品的**能力**。
 
